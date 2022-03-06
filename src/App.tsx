@@ -74,6 +74,7 @@ const App=()=> {
     <Routes>
       <Route path="/" element={<Main ></Main>} />
       <Route path="cart" element={<Cart />} />
+      <Route path="/tr/" element={<Main ></Main>} />
       
     </Routes>
   </Router>,
