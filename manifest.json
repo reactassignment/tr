@@ -1,0 +1,31 @@
+{
+  "short_name": "Pizza",
+  "name": "Pizza Store",
+  "icons": [
+    {
+      "src": "pizza.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "pizza2.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "pizza3.png",
+      "type": "image/png",
+      "sizes": "130x130 "
+    },
+    {
+      "src": "p4.png",
+      "type": "image/png",
+      "sizes": "144x144 512x512"
+    }
+
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
