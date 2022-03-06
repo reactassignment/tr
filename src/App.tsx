@@ -1,12 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+//import logo from './logo.svg';
+//import { Counter } from './features/counter/Counter';
 import './App.css';
+import Header from './components/Header'
+import Main from './components/Main'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link 
+} from "react-router-dom";
 
-function App() {
+import Cart from './components/Cart'
+
+const App=()=> {
   return (
-    <div className="App">
-      <header className="App-header">
+    <>
+    
+     {/*  <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
         <p>
@@ -50,8 +61,29 @@ function App() {
             React Redux
           </a>
         </span>
-      </header>
-    </div>
+      </header> */}
+
+      <Router>
+
+     <Header></Header> 
+      
+
+      
+   
+    
+    <Routes>
+      <Route path="/" element={<Main ></Main>} />
+      <Route path="cart" element={<Cart />} />
+      
+    </Routes>
+  </Router>,
+
+      
+
+    <footer style={{backgroundColor:'#142b4f',color:'white',minHeight:'10vh',justifyContent:'center',alignItems:'center',display:'flex'}}>
+        <h6 style={{fontSize:14}}>This is a part of an assignment for selection in internship</h6>
+      </footer>  
+    </>
   );
 }
 
