@@ -35,7 +35,7 @@ const App=()=> {
       
 
     <footer style={{backgroundColor:'#142b4f',color:'white',minHeight:'10vh',justifyContent:'center',alignItems:'center',display:'flex'}}>
-        <h6 style={{fontSize:14}}>This is a part of an assignment for selection in internship</h6>
+        <h6 style={{fontSize:14}}>This is a part of an assignment for internship</h6>
       </footer>  
     </>
   );
