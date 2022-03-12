@@ -14,7 +14,7 @@ function LoadingSkeleton() {
 
             <div className="container"> 
                 <div className='pizza__card__img' >
-                    <Skeleton variant='rectangular'  animation='wave'  width={'100%'} height={250}></Skeleton>
+                    <Skeleton variant='rectangular'  animation='wave'  width={'100%'} height={'100%'}></Skeleton>
 
                 </div>
                 <h4 className='top-left' style={{paddingLeft:10,paddingRight:10,width:100,height:20,}}>
@@ -26,12 +26,12 @@ function LoadingSkeleton() {
 
                     
                 </div>
-                <div className='bottom-right' style={{paddingLeft:10,paddingRight:10,width:100,height:25,}}>
+                <div className='bottom-right' style={{paddingLeft:10,paddingRight:10,width:100,height:25,backgroundColor: 'rgba(71, 70, 70, 0.807)',borderRadius:15 }}>
                     <Skeleton variant='text'  width={'100%'} height={'100%'} sx={{bgcolor:'hsla(230, 9%, 80%,0.9)'}}></Skeleton>
 
                 </div>
             </div>
-            <div className='pizza__card__body'>
+            <div className='pizza__card__body' style={{textAlign:'center',justifyContent:'center',}}>
                 <div className='pizza__card__title' style={{width:'100%',justifyContent:'space-between',alignItems:'center'}}>
                     <h2 className='pizza__card__name' style={{margin:5,textAlign:'left',width:'80%'}}>
                         <Skeleton variant='text' height={40} ></Skeleton>
@@ -50,14 +50,18 @@ function LoadingSkeleton() {
                     </div>
                     <div style={{width:10}}></div>
                     <div className='pizza__card__price' style={{flex:2,fontSize:20,fontWeight:'bold',height:35,}}>
-                        <div style={{marginTop:-10.5}}>
-                        <Skeleton variant='text' height={40} animation='wave'></Skeleton>
+                        <Button variant="outlined" disabled style={{color:'black',height:40,justifyContent:'center',alignItems:'center',textAlign:'center'}}>
+
+                        <div style={{marginTop:-5}}>
+                        <Skeleton variant='text' height={40} width={60} animation='wave'></Skeleton>
                         </div>
+                        </Button>
                     </div>
                 </div>
 
                 
                 <Button className='pizza__card__button' style={{fontWeight:'bold',borderRadius:15,fontSize:18,backgroundColor:'#f0f0f0',color:'white',width:'100%',flexGrow:1,marginTop:5,height:42}}>
+
                     <Skeleton variant='text' animation='wave' width={150} height={40} ></Skeleton>
 
                 </Button>

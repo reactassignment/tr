@@ -2,11 +2,11 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/reducers'
 //import {FontAwesomeIcon}  from '@fortawesome/react-fontawesome';
-import Icon from '@mui/material/Icon';
+//import Icon from '@mui/material/Icon';
 import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import FilterCenterFocusIcon from '@mui/icons-material/FilterCenterFocus';
+//import FilterCenterFocusIcon from '@mui/icons-material/FilterCenterFocus';
 
 const ProductComponent=()=> {
     const pizzas=useSelector((state:RootState)=>state.allPizzas.pizzas)
@@ -17,14 +17,14 @@ const ProductComponent=()=> {
         <div className='ui link cards'>
             <div className='card'>
                 <div className='image' style={{height:150}}>
-                    <img src={img_url}></img>
+                    <img src={img_url} alt="pizza_img"></img>
                 </div>
                 </div>
                 <div className='card'>    
                 <div className='content'>
                     <div className='header' style={{display:'flex',justifyContent:'space-between'}}>{name}
                     <div>
-                        {isVeg?<img src={require('../veg.png')} style={{width:20,height:20  }}></img>:<img src={require('../nonveg.png')} style={{width:20,height:20}}></img>}
+                        {isVeg?<img src={require('../veg.png')} alt="veg_img" style={{width:20,height:20  }}></img>:<img src={require('../nonveg.png')} alt="non_veg_img" style={{width:20,height:20}}></img>}
                     </div>
                     </div>
                     <div>{description}</div>

@@ -2,7 +2,7 @@ import React from 'react'
 import ActionTypes from '../constants/action-types'
 
 const initialState={
-    pizzas:[]
+    pizzas:null
 }
 
 const productReducer=(state:any = initialState,{type,payload}:any)=> {

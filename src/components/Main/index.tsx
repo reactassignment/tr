@@ -4,7 +4,7 @@ import ProductListing from '../ProductListing'
 const Main=()=> {
   return (
     <>
-      <div style={{minHeight:'80vh',justifyContent:'center',textAlign:'center'}}>
+      <div style={{minHeight:'80%',justifyContent:'center',textAlign:'center'}}>
           <ProductListing></ProductListing>
       </div>
     </>

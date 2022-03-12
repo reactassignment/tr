@@ -16,7 +16,7 @@ import ErrorPage from './components/ErrorPage';
 
 const App=()=> {
   return (
-    <>
+    <div style={{height:'100vh'}}>
     
      
 
@@ -34,10 +34,10 @@ const App=()=> {
 
       
 
-    <footer style={{backgroundColor:'#142b4f',color:'white',minHeight:'10vh',justifyContent:'center',alignItems:'center',display:'flex'}}>
-        <h6 style={{fontSize:14}}>This is a part of an assignment for internship</h6>
+    <footer style={{backgroundColor:'#142b4f',color:'white',minHeight:'10%',justifyContent:'center',alignItems:'center',display:'flex'}}>
+        <h6 style={{fontSize:14}}>This is a part of an assignment</h6>
       </footer>  
-    </>
+    </div>
   );
 }
 

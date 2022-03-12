@@ -1,0 +1,179 @@
+.tw-toggle {
+    /* background: #95A5A6; */
+    display: inline-block;
+    padding: 2px 3px 2px 2px;
+    border-radius: 20px;
+    position:relative;
+    border: 2px solid #252525;
+    background: rgba(248, 250, 255, 0.932);
+  }
+  
+  .tw-toggle label {
+    text-align: center;
+    font-family: sans-serif;
+    display: inline-block;
+    color: black;
+    font-weight:bold;
+    position:relative;
+    z-index:2;
+    margin: 0;
+    text-align: center;
+    padding: 2px 3px;
+    font-size: 15px;
+    /* cursor: pointer; */
+  }
+  
+  .tw-toggle input {
+    /* display: none; */
+    position: absolute;
+    z-index: 3;
+    opacity: 0;
+    cursor: pointer;
+    
+  }
+  
+  .tw-toggle span {
+    height: 21px;
+    width: 40px;
+    line-height: 21px;
+    border-radius: 10px;
+    background:#fff;
+    display:block;
+    position:absolute;
+    left: 22px;
+    top: 3px;
+    transition:all 0.15s ease-in-out;
+  }
+  
+  .tw-toggle input[value="veg"]:checked ~ span{
+    background:#27ae60;
+    left:3px;
+    color:#fff;
+    width:38px;
+    height:24px;
+    
+  }
+  .tw-toggle input[value="non-veg"]:checked ~ span{
+    background:#7c2a21;
+    left: 42px;
+    width:76px;
+    height:24px;
+
+  }
+  .tw-toggle input[value="both"]:checked ~ span{
+    background:#0747ad;
+    left: 120px;
+    width:46px;
+    height:24px;
+
+  }
+  
+  
+  .tw-toggle input[value="veg"]:checked + label,
+  .tw-toggle input[value="both"]:checked + label{
+    color:#fff;
+  }
+  .tw-toggle input[value="non-veg"]:checked + label{
+    color:#fff;
+  }
+  
+  .filter__result{
+      background-color: white;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+  }
+
+  .sort__price{
+    background-color: white;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+.sort__rating{
+    background-color: #fff;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 18px;
+
+}
+
+.filter__wrapper{
+    background-color:hsla(282, 59%, 34%,0.6);
+}
+
+.sort__wrapper{
+    width:60%;
+}
+
+
+@media screen and (max-width:1092px) {
+    .filter__wrapper{
+        flex-direction: column;
+        background-color: white;
+    }
+    .tw-toggle{
+        margin-top: 22px;
+    }
+
+    .sort__wrapper{
+        width:100%;
+        
+        padding: 5px;
+    }
+    .products__wrapper{
+        flex-direction: row;
+        background-color: hsla(282, 59%, 34%,0.6);
+        align-items: center;
+        width: 100%;
+    }
+
+    .sort__wrapper{
+        width:66%;
+    }
+}
+@media screen and (max-width:640px) {
+    
+
+    .products__wrapper{
+        flex-direction: column;
+        background-color: white;
+        
+        width: 100%;
+    }
+
+    .filter__result{
+        background-color: #fff;
+        width: 100%;
+        margin-bottom: 15px;
+        justify-content: center;
+    }
+    .sort__wrapper{
+        width:100%;
+        font-size: 14px;
+        background-color: hsla(282, 59%, 34%,0.6);
+
+    }
+}
+@media screen and (max-width:350px) {
+    .sort__wrapper{
+        display: flex;
+        justify-content: center;
+        flex:1;
+        font-size: 10px;
+        flex-direction: column;
+    }
+    .sort__price{
+        width: 100%;
+    }
+}
+
+.filter__wrapper{
+    border: 0.1rem #c0c0c0 solid;
+}

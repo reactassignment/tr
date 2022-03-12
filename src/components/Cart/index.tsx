@@ -6,7 +6,7 @@ import '../ProductComponent2/styles.css'
 function Cart() {
   return (
     <>
-        <div style={{minHeight:'80vh',justifyContent:'center',textAlign:'center'}}>
+        <div style={{minHeight:'80%',justifyContent:'center',textAlign:'center'}}>
             <h1 style={{textDecorationLine:'underline'}}>Cart</h1>
             <div className='pizza__wrapper'>
 
