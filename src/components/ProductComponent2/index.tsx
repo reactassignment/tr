@@ -278,7 +278,7 @@ aria-describedby="modal-modal-description"
                 </div>
 
                 <div className='pizza__card__button'>
-                  <ModalPopUp pizza={allPizzas[id-1]} ></ModalPopUp>
+                  <ModalPopUp pizza={allPizzas[id-1]} addToCart={props.addToCart} ></ModalPopUp>
                   
                 </div>
             </div>

@@ -16,7 +16,7 @@ import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 
-const ProductListing=()=> {
+const ProductListing=(props:any)=> {
   const dispatch=useDispatch()
 const [loading,setLoading]=useState(0)
   //console.log(pizzas)
@@ -364,7 +364,7 @@ const renderlistPizza=pizzas?.map((pizza:any)=>{
         : 
         <>
         
-        <PizzaCard mypizza={mypizza}></PizzaCard>
+        <PizzaCard mypizza={mypizza} addToCart={props.addToCart}></PizzaCard>
         </>
        }  
           

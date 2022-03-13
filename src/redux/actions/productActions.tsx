@@ -1,5 +1,5 @@
-import { type } from 'os'
-import React from 'react'
+//import { type } from 'os'
+//import React from 'react'
 import ActionTypes from '../constants/action-types'
 
 export const setPizzas=(pizzas:any)=> {
@@ -11,12 +11,12 @@ export const setPizzas=(pizzas:any)=> {
 
 
 
-export const SelectedPizza=(pizza:any)=> {
+/* export const SelectedPizza=(pizza:any)=> {
     return {
       type: ActionTypes.SELECTED_PIZZA,
       payload: pizza
     }
 }
-  
+   */
  
   

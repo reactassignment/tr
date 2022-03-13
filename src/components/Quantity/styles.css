@@ -66,6 +66,7 @@ $modifier--text-color: #888;
     width:90%;
     margin-left:    10%;
     height:60%;
+    max-width: 600px;
 }
 
 .container_quantity
@@ -83,7 +84,7 @@ $modifier--text-color: #888;
     background-color:#f74b11;
 }
 
-@media screen and (max-width:920px){
+@media screen and (max-width:990px){
     .image-adjust{
         width:380px;
         margin-left:20px;

@@ -1,11 +1,14 @@
 import React from 'react'
 import ProductListing from '../ProductListing'
 
-const Main=()=> {
+const Main=(props:any)=> {
+  //console.log(props)
+  //console.log(props.cartItems,props.cartItems.length)
+
   return (
     <>
       <div style={{minHeight:'80%',justifyContent:'center',textAlign:'center'}}>
-          <ProductListing></ProductListing>
+          <ProductListing addToCart={props.addToCart}></ProductListing>
       </div>
     </>
   )

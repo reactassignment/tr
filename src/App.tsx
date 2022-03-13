@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 //import logo from './logo.svg';
 //import { Counter } from './features/counter/Counter';
 import './App.css';
@@ -15,6 +15,106 @@ import Cart from './components/Cart'
 import ErrorPage from './components/ErrorPage';
 
 const App=()=> {
+
+  //const [cartItems,setCartItems]=useState(localStorage.getItem("cartItems")===null?Array():JSON.parse(localStorage.getItem("cartItems")))
+  const [cartItems,setCartItems]=useState(JSON.parse(localStorage.getItem('cartItems') || '[]'))
+  const [quantity,setQuantity]=useState(0)
+  const [updateId,setUpdateId]=useState(null)
+//cartItems={cartItems}
+
+useEffect(()=>{
+  console.log("update1")
+
+  updateCart()
+},[quantity])
+useEffect(()=>{
+  console.log("update2")
+
+  updateCart()
+},[])
+/* useEffect(()=>{},[cartItems]) */
+console.log(cartItems)
+
+const updateCart = () => {
+  const cart = cartItems.slice();
+  cart.forEach((x:any)=>{
+
+      if( updateId===x.cartId ){
+          
+          x.count=quantity;
+          x.totalPrice=x.count * x.price
+      }
+  })
+  setCartItems(cart)
+  setUpdateId(null)
+  localStorage.setItem("cartItems",JSON.stringify(cart))
+
+};
+
+const removeFromCart = (pizza:any) => {
+  const cart = cartItems.slice();
+  console.log("removecart1")
+
+  console.log(cart,pizza)
+  setCartItems(
+     cart.filter((x:any) => x._id !== pizza._id),
+  )
+  localStorage.setItem("cartItems",JSON.stringify(cart))
+
+};
+
+const clearCart=()=>{
+  const cart=Array()
+  setCartItems(cart)
+  localStorage.setItem("cartItems",JSON.stringify(cart))
+}
+
+  const addToCart=(add_pizza:any,quantity:number,choiceSize:String,choiceToppings:any,price:number)=>{
+    const cart=cartItems.slice()
+    const total=price*quantity
+    let already_exists=false
+    const cartId=`${add_pizza.id}+${(choiceToppings.r).toString()}+${choiceToppings.o}+${choiceToppings.g}+${choiceToppings.e}+${choiceToppings.b}+${choiceSize}`
+    const r="Red Pepper"
+    const o="Onion"
+    const g="Grilled Mushroom"
+    const e="Extra Cheese"
+    const b="Black Olive"
+    const addons=(choiceToppings.r?`${r} `:"") + (choiceToppings.o?`, ${o} `:"") +(choiceToppings.g?`, ${g} `:"") +(choiceToppings.e?`, ${e} `:"") +(choiceToppings.b?`, ${b} `:"")+
+    (!choiceToppings.r && !choiceToppings.o && !choiceToppings.g && !choiceToppings.e && !choiceToppings.b ? "No Add Ons":"")
+    console.log(addons,"addons")
+
+    cart.forEach((x:any)=>{
+      //console.log(x.id===add_pizza.id)
+      //console.log(choiceSize===x.choiceSize)
+     // console.log(choiceToppings===x.choiceToppings)
+        if( cartId===x.cartId ){
+            already_exists=true;
+            x.count+=quantity;
+          x.totalPrice=x.count * x.price
+
+        }
+    })
+    //console.log(already_exists,"hai")
+    if(!already_exists && quantity>0){
+      //console.log(choiceToppings)
+      //console.log(cartId)
+      
+        cart.push({
+            ...add_pizza,
+            count:quantity,
+            choiceSize:choiceSize,
+            choiceToppings:choiceToppings,
+            cartId: cartId,
+            addons: addons,
+          totalPrice: total,
+
+        })
+    }
+    setCartItems(cart)
+    localStorage.setItem("cartItems",JSON.stringify(cart))
+    
+  }
+  //console.log(addToCart)
   return (
     <div style={{height:'100vh'}}>
     
@@ -22,12 +122,12 @@ const App=()=> {
 
       <Router>
 
-     <Header></Header> 
+     <Header cart={cartItems.length}></Header> 
 
     <Routes>
-      <Route path="/" element={<Main ></Main>} />
-      <Route path="cart" element={<Cart />} />
-      <Route path="/tr/" element={<Main ></Main>} />
+      <Route path="/" element=   {<Main addToCart={addToCart} cartItems={cartItems} removeFromCart={removeFromCart}></Main>} />
+      <Route path="cart" element={<Cart clearCart={clearCart} cartItems={cartItems} setUpdateId={setUpdateId} removeFromCart={removeFromCart} setQuantity={setQuantity} updateCart={updateCart}/>}  />
+      <Route path="/tr/" element={<Main addToCart={addToCart} cartItems={cartItems} removeFromCart={removeFromCart}></Main>} />
       <Route path="*" element={<ErrorPage></ErrorPage>}></Route>
     </Routes>
   </Router>,

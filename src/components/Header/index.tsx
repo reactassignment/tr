@@ -6,7 +6,7 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 
 import '../../App.css'
 //import MenuBook from '@mui/icons-material/MenuBook';
-const Header=()=> {
+const Header=(props:any)=> {
   return (
     
     <header  className="App-header" style={{backgroundColor:'#db3a04',fontSize:14,flexDirection:'row',justifyContent:'space-between',paddingLeft:5,paddingRight:5,minHeight:'8%',marginBottom:'2%'}}>
@@ -26,7 +26,13 @@ const Header=()=> {
             
             <div style={{width:10}}></div>
             <Link to='/cart'style={{color:'white',textDecorationLine:'none'}}>  
-                <Button style={{color:'white',backgroundColor:'rgba(110, 19, 40,0.8)'}}><div className='App-link' style={{color:'white',fontSize:12,fontWeight:'bold'}}>Cart</div>
+                <Button style={{color:'white',backgroundColor:'rgba(110, 19, 40,0.8)'}}><div className='App-link' style={{color:'white',fontSize:12,fontWeight:'bold'}}>Cart
+                
+                <sup style={{backgroundColor:'yellow',color:'black',margin:5,padding:5,fontWeight:'bold',fontSize:15,borderRadius:50}}>
+                  {props.cart}
+                </sup>
+
+                </div>
               <div style={{marginLeft:2,marginTop:5}}>
                 
                 <ShoppingCartIcon color='inherit' fontSize='medium'></ShoppingCartIcon>

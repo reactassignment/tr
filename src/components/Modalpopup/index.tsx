@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-
+import {useEffect, useState } from 'react';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -18,17 +18,49 @@ import Quantity from '../Quantity';
 
  function CheckboxLabelsToppings(props:any) {
     //console.log(props.toppings)
-
+    const [state,setState]=useState(
+      {
+        r:false,
+        o:false,
+        g:false,
+        e:false,
+        b:false,
+      }
+    )
+    useEffect(()=>{
+      //console.log(state)
+      props.setSelectedToppings(state)
+    })
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setState({
+        ...state,
+        [event.target.name]: event.target.checked,
+      });
+    };
+    /* const{ 
+      redPepper,
+      onion,
+      grilledMushroom,
+      extraCheese,
+      blackOlive } = state; */ 
   return (
       <FormControl>
     <FormLabel id="demo-radio-buttons-group-label">{props.toppings.title.toUpperCase()}</FormLabel>
 
-    <FormGroup>
+    <FormGroup
+    
+    
+    >
     {
               props.toppings.items.map((x:any)=>{
                   //console.log(x)
                   return(
-                <FormControlLabel value={x.name.toLowerCase()} control={<Checkbox />} label={x.name} key={x.name} />
+                <FormControlLabel   
+                control={
+                      <Checkbox onChange={handleChange} name={x.name.toLowerCase().charAt(0)}/>
+                    }
+                
+                label={x.name} key={x.name} />
                 )
               })
           }
@@ -40,7 +72,10 @@ import Quantity from '../Quantity';
 
 function RadioButtonsGroupSize(props:any) {
     //console.log(props.size)
-
+  const [state,setState]=useState("regular")
+  useEffect(()=>{
+    props.setSelectedSize(state)
+  })
   return (
     <FormControl>
       <FormLabel id="demo-radio-buttons-group-label">{props.size.title.toUpperCase()}</FormLabel>
@@ -48,6 +83,10 @@ function RadioButtonsGroupSize(props:any) {
         aria-labelledby="demo-radio-buttons-group-label"
         defaultValue="regular"
         name="radio-buttons-group"
+        onChange={(e)=>{
+          //console.log(e.target.value)
+          setState(e.target.value)
+        }}
       >
           {
               props.size.items.map((x:any)=>{
@@ -73,20 +112,60 @@ function RadioButtonsGroupSize(props:any) {
 }
 function RadioButtonsGroupToppings(props:any) {
    // console.log(props.toppings)
+   const [state,setState]=useState(
+    {
+      r:false,
+      o:false,
+      g:false,
+      e:false,
+      b:false,
+    }
+  )
+  const defaultState={
+    r:false,
+    o:false,
+    g:false,
+    e:false,
+    b:false,
+  }
+   useEffect(()=>{
+    //console.log(state)
+
+     props.setSelectedToppings(state)
+   })
 
   return (
     <FormControl>
       <FormLabel id="demo-radio-buttons-group-label">{props.toppings.title.toUpperCase()}</FormLabel>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
-        defaultValue="female"
+        defaultValue="none"
         name="radio-buttons-group"
+        onChange={(e)=>{
+          console.log(e.target.value)
+          if(e.target.value!=="none")
+          {
+
+          setState({
+              ...defaultState,
+              [e.target.name]: true,
+            })
+          }
+          else{
+            setState({
+              ...defaultState,
+              
+            })
+          }
+        }}
       >
+            <FormControlLabel value="none" control={<Radio />} label="None" />
+          
           {
               props.toppings.items.map((x:any)=>{
                   //console.log(x)
                   return(
-                <FormControlLabel value={x.name.toLowerCase()} control={<Radio />} label={x.name} key={x.name} />
+                <FormControlLabel value={x.name.toLowerCase()} name={x.name.toLowerCase().charAt(0)} control={<Radio />} label={x.name} key={x.name} />
                 )
               })
           }
@@ -112,13 +191,17 @@ const style = {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   //console.log(props.pizza)
+  const [quantity,setQuantity]=useState(1)
+  const [selectedSize,setSelectedSize]=useState("regular")
+  const [selectedToppings,setSelectedToppings]=useState("none")
+
 
   return (
     <div>
       <Button className="pizza__card__button"
       style={{fontWeight:'bold',borderRadius:15,fontSize:18,backgroundColor:'#f74b11',color:'white',width:'100%',flexGrow:1,}}
        onClick={()=>{
-            console.log(props.pizza)
+            //console.log(props.pizza)
             
            handleOpen()}
        }>ADD</Button>
@@ -128,10 +211,10 @@ const style = {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={[style,{borderRadius:10,minWidth:'80%',minHieght:'80%'}]}>
+        <Box sx={[style,{borderRadius:10,minWidth:'80%',minHieght:'50%'}]}>
             <div style={{display:'flex',flexDirection:"row", width:'100%', justifyContent:'space-between'}}>
                 <div>
-                    <div style={{backgroundColor:'wheat',width:'90%',marginLeft:15,padding:5,}}>
+                    <div style={{backgroundColor:'#faf0f9',borderRadius:5,width:'90%',marginLeft:15,padding:10,}}>
                         <h2>
                             Customization for {props.pizza.name} 
                         </h2>
@@ -149,23 +232,25 @@ const style = {
             
                     <div style={{display:'flex',flexDirection:'column' , marginTop:5,marginLeft:15}}>
                     
-                    <RadioButtonsGroupSize size={props.pizza.size[0]}></RadioButtonsGroupSize>
+                    <RadioButtonsGroupSize size={props.pizza.size[0]} setSelectedSize={setSelectedSize}></RadioButtonsGroupSize>
                     {props.pizza.toppings[0].isRadio===true?
-                    <RadioButtonsGroupToppings toppings={props.pizza.toppings[0]}/>
+                    <RadioButtonsGroupToppings toppings={props.pizza.toppings[0]} setSelectedToppings={setSelectedToppings}/>
 
                     :
-                    <CheckboxLabelsToppings  toppings={props.pizza.toppings[0]}/>
+                    <CheckboxLabelsToppings  toppings={props.pizza.toppings[0]} setSelectedToppings={setSelectedToppings}/>
                     }
                     </div>
           </div>
           <div style={{display:'flex',flexDirection:'column',justifyContent:'center'}}>
             <img className="image-adjust" src={props.pizza.img_url} alt={props.pizza.name} style={{marginBottom:20}}></img>
-            <Quantity price={props.pizza.price} isVeg={props.pizza.isVeg}></Quantity>
+        <Quantity price={props.pizza.price} isVeg={props.pizza.isVeg} quantity={quantity} setQuantity={setQuantity}></Quantity>
             <Button className='button_container'
       style={{fontWeight:'bold',borderRadius:15,fontSize:18,backgroundColor:'#f74b11',color:'white',marginLeft:'17.5%',width:'75%',marginTop:20}}
        onClick={()=>{
-            
-        handleClose()
+            //console.log(props.pizza)
+
+            props.addToCart(props.pizza,quantity,selectedSize,selectedToppings, props.pizza.price)
+            handleClose()
        }}>ADD to Cart</Button>
         </div>
         </div>
@@ -177,10 +262,10 @@ const style = {
 
 function ModalPopUp(props:any) {
     //console.log(props.pizza)
-
+    //console.log(props)
   return (
     <div>
-      <BasicModal pizza={props.pizza}></BasicModal>
+      <BasicModal pizza={props.pizza} addToCart={props.addToCart}></BasicModal>
     </div>
   );
 }

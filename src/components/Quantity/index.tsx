@@ -1,11 +1,30 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import React from 'react'
 import './styles.css'
 
 function Quantity(props:any) {
-    const [state,setState]=useState(1)
+
+    const [state,setState]=useState(props.quantity)
     const [price,setPrice]=useState(props.price)
 
+    useEffect(()=>{
+      console.log("quantity,",props)
+      if(props.isCart){
+        console.log("update",props.pizzaId)
+        props.setUpdateId(props.pizzaId)
+        
+        if(props.quantity===0)
+        {
+          props.removeFromCart(props.pizzaId)
+        }
+
+      }
+      else{
+        
+      }
+      props.setQuantity(state)
+      //console.log(props.quantity)
+    })
     const increment=()=>{
         setState( state+1)
         setPrice(price+props.price)
@@ -19,12 +38,14 @@ function Quantity(props:any) {
         }
       }
 
+
+
     return (
         <>
         {props.isVeg?
         <div className="container_quantity" style={{display:'flex'}}>
             
-        <div className="single_container" style={{backgroundColor:'#abd4b6',marginLeft:'10%',display:'flex',flexDirection:'column',textAlign:'center',justifyContent:'center'}}>
+        <div className="single_container" style={{backgroundColor:'#e0f5ce',marginLeft:'10%',display:'flex',flexDirection:'column',textAlign:'center',justifyContent:'center'}}>
           <h4>
             Quantity
          </h4>
@@ -38,20 +59,21 @@ function Quantity(props:any) {
           </button>  
         </div>  
         </div>
-            <div className="single_container" style={{backgroundColor:'#abd4b6',marginLeft:'10%',display:'flex',flexDirection:'column',textAlign:'center',justifyContent:'center'}}>
+            <div className="single_container" style={{backgroundColor:'#e0f5ce',marginLeft:'10%',display:'flex',flexDirection:'column',textAlign:'center',justifyContent:'center'}}>
                 <h4>
-                    Total Price:
+                {props.isCart?"Sub":""}Total Price:
+                    
                 </h4>
                 <div className="quantity-input">
 
-                <h6 className="quantity-input__screen" style={{fontSize:25,width:'100%'}}>&#8377; {price}  </h6> 
+                <h6 className="quantity-input__screen" style={{fontSize:25,width:'100%'}}>&#8377; {props.isCart?props.price*props.quantity :price}  </h6> 
             </div>
         </div>
     </div>
     :
     <div className="container_quantity" style={{display:'flex'}}>
             
-        <div className="single_container" style={{backgroundColor:'#e09a79',marginLeft:'10%',display:'flex',flexDirection:'column',textAlign:'center',justifyContent:'center'}}>
+        <div className="single_container" style={{backgroundColor:'wheat',marginLeft:'10%',display:'flex',flexDirection:'column',textAlign:'center',justifyContent:'center'}}>
           <h4>
             Quantity
          </h4>
@@ -65,13 +87,13 @@ function Quantity(props:any) {
           </button>  
         </div>  
         </div>
-            <div className="single_container" style={{backgroundColor:'#e09a79',marginLeft:'10%',display:'flex',flexDirection:'column',textAlign:'center',justifyContent:'center'}}>
+            <div className="single_container" style={{backgroundColor:'wheat',marginLeft:'10%',display:'flex',flexDirection:'column',textAlign:'center',justifyContent:'center'}}>
                 <h4>
-                    Total Price:
+                    {props.isCart?"Sub":""}Total Price:
                 </h4>
                 <div className="quantity-input">
 
-                <h6 className="quantity-input__screen" style={{fontSize:25,width:'100%'}}>&#8377; {price}  </h6> 
+                <h6 className="quantity-input__screen" style={{fontSize:25,width:'100%'}}>&#8377; {props.isCart?props.price:price}  </h6> 
             </div>
         </div>
     </div>
