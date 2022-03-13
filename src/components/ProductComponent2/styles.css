@@ -166,7 +166,7 @@ $clr-gray700: #161d34; */
   }
 
   .pizza__card__button{
-    margin-top: auto;
+    background: none;
   }
 }
 

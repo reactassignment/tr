@@ -40,9 +40,9 @@ const [loading,setLoading]=useState(0)
     
     dispatch(setPizzas(response))
     setLoading(0)
-    basicload=1
+    //basicload=1
   }
-var basicload=0
+//var basicload=0
 
   useEffect(()=>{
     setLoading(1)
@@ -51,8 +51,8 @@ var basicload=0
       fetchPizzas()
       
     
-    console.log("basicload",basicload)
-    basicload=0
+    //console.log("basicload",basicload)
+    //basicload=0
     //fetchPizzas()
     //setTimeout(fetchPizzas,600)
    // dispatch(setPizzas(pizzas))
@@ -70,7 +70,7 @@ var basicload=0
 
   const updatepizza=()=>{
     setmypizza(pizzas)
-    console.log(pizzas,"pizzasaasa")
+    //console.log(pizzas,"pizzasaasa")
   }
 
   useEffect(()=>{
@@ -89,7 +89,7 @@ const [mypizza,setmypizza]=useState(null)
 
 useEffect(()=>{
   //setmypizza(pizzas)
-  console.log("mypizza",mypizza)
+  //console.log("mypizza",mypizza)
 
 },[mypizza])
 
@@ -106,7 +106,7 @@ useEffect(()=>{
 },[sortPrice])
 
 const updateSortPrice=()=>{
-  console.log("sortPrice",sortPrice)
+  //console.log("sortPrice",sortPrice)
   pizzas=pizzas
         .slice()
         .sort((a:any, b:any) =>
@@ -124,7 +124,7 @@ const updateSortPrice=()=>{
             -1
 
             )
-        console.log("allsortprice",pizzas)
+        //console.log("allsortprice",pizzas)
         if(isVeg==="veg")
         {
           pizzas=pizzas?.filter((pizza: { isVeg: boolean })=>pizza.isVeg===true)
@@ -134,7 +134,7 @@ const updateSortPrice=()=>{
           pizzas=pizzas?.filter((pizza: { isVeg: boolean })=>pizza.isVeg===false)
 
         }
-        console.log("vegsortprice",pizzas)
+        //console.log("vegsortprice",pizzas)
 
         setSortRating("any")
         setmypizza(pizzas)
@@ -142,7 +142,7 @@ const updateSortPrice=()=>{
 
 
 const sortPizzasByPrice=(e:any)=>{
-  console.log("input",e.target.value)
+  //console.log("input",e.target.value)
   setSortPrice(e.target.value)
   
 }
@@ -160,8 +160,8 @@ useEffect(()=>{
   },[sortRating])
 
 const updateSortRating=()=>{
-  console.log("sortRating",sortRating)
-  console.log("pizzaslist",pizzas)
+  //console.log("sortRating",sortRating)
+  //console.log("pizzaslist",pizzas)
   pizzas=pizzas
         .slice()
         .sort((a:any, b:any) =>
@@ -172,7 +172,7 @@ const updateSortRating=()=>{
             
         )
 
-        console.log("pizzasortrating",pizzas)
+        //console.log("pizzasortrating",pizzas)
         if(isVeg==="veg")
         {
           pizzas=pizzas?.filter((pizza: { isVeg: boolean })=>pizza.isVeg===true)
@@ -187,7 +187,7 @@ const updateSortRating=()=>{
 
 }
 const sortPizzasByRating=(e:any)=>{
-  console.log("input",e.target.value)
+  //console.log("input",e.target.value)
   setSortRating(e.target.value)
   
 
@@ -199,7 +199,7 @@ useEffect(()=>{
 },[isVeg])
 
 const updateFilterPizzas=()=>{
-  console.log("isVeg",isVeg)
+  //console.log("isVeg",isVeg)
   if(isVeg==='veg')
   {
     pizzas=allPizzas
@@ -209,7 +209,7 @@ const updateFilterPizzas=()=>{
     if(pizzas!==null)
     {
     pizzas=pizzas?.filter((pizza: { isVeg: boolean })=>pizza.isVeg===true)
-    console.log("pizzas",pizzas)
+    //console.log("pizzas",pizzas)
     //customisedPizzaSet()
     setmypizza(pizzas)
   }
@@ -222,7 +222,7 @@ const updateFilterPizzas=()=>{
 
     //console.log(pizzas)
     pizzas=pizzas.filter((pizza: { isVeg: boolean })=>pizza.isVeg===false)
-    console.log(pizzas)
+    //console.log(pizzas)
     setmypizza(pizzas)
 
     //customisedPizzaSet()
@@ -232,7 +232,7 @@ const updateFilterPizzas=()=>{
     //console.log(allPizzas)
     //fetchPizzas()
     pizzas=allPizzas
-    console.log(pizzas)
+    //console.log(pizzas)
     //customisedPizzaSet()
     setmypizza(pizzas)
 
@@ -242,7 +242,7 @@ const updateFilterPizzas=()=>{
 
 
 const filterPizzas=(e:any)=>{
-  console.log("input",e.target.value)
+  //console.log("input",e.target.value)
   setIsVeg(e.target.value)
   setSortPrice("any")
   setSortRating("any")
