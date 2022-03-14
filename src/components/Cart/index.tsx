@@ -8,7 +8,7 @@ import './styles.css'
 import { Button } from '@mui/material'
 
 function Cart(props:any) {
-  console.log(props.cartItems,props.cartItems.length)
+  //console.log(props.cartItems,props.cartItems.length)
   /* console.log(props.cartItems[0].toppings[0].items.filter((x:any)=>
   {
     return x.name.charAt(0).toLowerCase()
@@ -103,7 +103,7 @@ function Cart(props:any) {
 
                     </div>
 
-                    <Quantity price={pizza.price} setUpdateId={props.setUpdateId} isVeg={pizza.isVeg} quantity={pizza.count} setQuantity={props.setQuantity} pizzaId={pizza.cartId} isCart={isCart} pizza={props.pizza}
+                    <Quantity price={pizza.price} setUpdateId={props.setUpdateId} isVeg={pizza.isVeg} quantity={pizza.count} setQuantity={props.setQuantity} pizzaId={pizza.cartId} isCart={isCart} pizza={pizza}
                     clearCart={props.clearCart} removeFromCart={props.removeFromCart}
                     ></Quantity>
 

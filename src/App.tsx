@@ -26,14 +26,15 @@ useEffect(()=>{
   console.log("update1")
 
   updateCart()
+  console.log("cartItems",cartItems)
 },[quantity])
 useEffect(()=>{
   console.log("update2")
-
+  console.log("cartItems",cartItems)
   updateCart()
 },[])
 /* useEffect(()=>{},[cartItems]) */
-console.log(cartItems)
+//console.log("cartItems",cartItems)
 
 const updateCart = () => {
   const cart = cartItems.slice();
@@ -46,6 +47,7 @@ const updateCart = () => {
       }
   })
   setCartItems(cart)
+
   setUpdateId(null)
   localStorage.setItem("cartItems",JSON.stringify(cart))
 
@@ -55,11 +57,20 @@ const removeFromCart = (pizza:any) => {
   const cart = cartItems.slice();
   console.log("removecart1")
 
-  console.log(cart,pizza)
-  setCartItems(
+  console.log("pizza",pizza)
+  console.log("cart",cart)
+  const index = cart.indexOf(pizza)
+  console.log(cart.indexOf(pizza))
+  if (index > -1) {
+    cart.splice(index, 1); // 2nd parameter means remove one item only
+  }
+  console.log("new cart",cart)
+  setCartItems(cart)
+  /* setCartItems(
      cart.filter((x:any) => x._id !== pizza._id),
-  )
-  localStorage.setItem("cartItems",JSON.stringify(cart))
+  ) 
+ */ 
+localStorage.setItem("cartItems",JSON.stringify(cart))
 
 };
 

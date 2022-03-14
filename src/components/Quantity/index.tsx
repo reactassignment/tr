@@ -8,14 +8,14 @@ function Quantity(props:any) {
     const [price,setPrice]=useState(props.price)
 
     useEffect(()=>{
-      console.log("quantity,",props)
+      //console.log("inside Quantity,",props)
       if(props.isCart){
-        console.log("update",props.pizzaId)
+        console.log("update from quantity",props.pizzaId)
         props.setUpdateId(props.pizzaId)
         
         if(props.quantity===0)
         {
-          props.removeFromCart(props.pizzaId)
+          props.removeFromCart(props.pizza)
         }
 
       }
