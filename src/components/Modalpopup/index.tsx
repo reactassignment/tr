@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+//import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import {useEffect, useState } from 'react';
 import Radio from '@mui/material/Radio';
@@ -243,7 +243,7 @@ const style = {
           </div>
           <div style={{display:'flex',flexDirection:'column',justifyContent:'center'}}>
             <img className="image-adjust" src={props.pizza.img_url} alt={props.pizza.name} style={{marginBottom:20}}></img>
-        <Quantity price={props.pizza.price} isVeg={props.pizza.isVeg} quantity={quantity} setQuantity={setQuantity}></Quantity>
+        <Quantity price={parseInt(props.pizza.price)} isVeg={props.pizza.isVeg} quantity={quantity} setQuantity={setQuantity}></Quantity>
             <Button className='button_container'
       style={{fontWeight:'bold',borderRadius:15,fontSize:18,backgroundColor:'#f74b11',color:'white',marginLeft:'17.5%',width:'75%',marginTop:20}}
        onClick={()=>{

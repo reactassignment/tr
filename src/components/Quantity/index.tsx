@@ -6,10 +6,16 @@ function Quantity(props:any) {
 
     const [state,setState]=useState(props.quantity)
     const [price,setPrice]=useState(props.price)
+    const [totalPrice,setTotalPrice]=useState(props.price)
+
 
     useEffect(()=>{
-      //console.log("inside Quantity,",props)
+      console.log("inside Quantity,",props)
+      console.log("props total price",props.isCart?props.price*props.quantity:props.price)
+      console.log("price",price)
       if(props.isCart){
+      console.log("price==number",!isNaN(props.pizza.price))
+
         console.log("update from quantity",props.pizzaId)
         props.setUpdateId(props.pizzaId)
         
@@ -93,7 +99,7 @@ function Quantity(props:any) {
                 </h4>
                 <div className="quantity-input">
 
-                <h6 className="quantity-input__screen" style={{fontSize:25,width:'100%'}}>&#8377; {props.isCart?props.price:price}  </h6> 
+                <h6 className="quantity-input__screen" style={{fontSize:25,width:'100%'}}>&#8377; {props.isCart?props.price*props.quantity:price}  </h6> 
             </div>
         </div>
     </div>

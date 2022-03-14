@@ -2,10 +2,13 @@ import React from 'react'
 //import PizzaCard from '../ProductComponent2'
 //import LoadingSkeleton from '../ProductComponent2/skeletonbody'
 import '../ProductComponent2/styles.css'
-import ModalPopUp from '../Modalpopup'
+//import ModalPopUp from '../Modalpopup'
 import Quantity from '../Quantity'
 import './styles.css'
 import { Button } from '@mui/material'
+import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+
 
 function Cart(props:any) {
   //console.log(props.cartItems,props.cartItems.length)
@@ -46,9 +49,7 @@ function Cart(props:any) {
                  onClick={()=>{
                    props.clearCart()
                  }}
-                 >Clear Cart
-                 
-                 </Button>
+                 >Clear Cart <DeleteForeverIcon></DeleteForeverIcon> </Button>
                  </div>
 
 
@@ -103,14 +104,16 @@ function Cart(props:any) {
 
                     </div>
 
-                    <Quantity price={pizza.price} setUpdateId={props.setUpdateId} isVeg={pizza.isVeg} quantity={pizza.count} setQuantity={props.setQuantity} pizzaId={pizza.cartId} isCart={isCart} pizza={pizza}
+                    <Quantity 
+                    price={ parseInt(pizza.price)   } 
+                    setUpdateId={props.setUpdateId} isVeg={pizza.isVeg} quantity={pizza.count} setQuantity={props.setQuantity} pizzaId={pizza.cartId} isCart={isCart} pizza={pizza}
                     clearCart={props.clearCart} removeFromCart={props.removeFromCart}
                     ></Quantity>
 
                       <Button className="right" style={{backgroundColor:'red',color:'white'}}
                           onClick={() => props.removeFromCart(pizza)}
                         >
-                          Remove
+                          Remove <DeleteIcon></DeleteIcon>
                         </Button>
                       </div>
                     </div>

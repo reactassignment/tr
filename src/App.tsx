@@ -8,7 +8,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link 
+   
 } from "react-router-dom";
 
 import Cart from './components/Cart'
@@ -23,14 +23,14 @@ const App=()=> {
 //cartItems={cartItems}
 
 useEffect(()=>{
-  console.log("update1")
+  //console.log("update1")
 
   updateCart()
-  console.log("cartItems",cartItems)
+  //console.log("cartItems",cartItems)
 },[quantity])
 useEffect(()=>{
   console.log("update2")
-  console.log("cartItems",cartItems)
+  //console.log("cartItems",cartItems)
   updateCart()
 },[])
 /* useEffect(()=>{},[cartItems]) */
