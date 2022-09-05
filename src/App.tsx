@@ -74,6 +74,44 @@ localStorage.setItem("cartItems",JSON.stringify(cart))
 
 };
 
+const onButtonClick =async () => {
+  // using Java Script method to get PDF file
+  /* try {
+  let blob = await /* fetch('https://treflo-static.sgp1.digitaloceanspaces.com/administration/templates_1661858500647_Thermal%202in.pdf').then(r => r.blob());
+  console.log(blob) 
+   fetch('https://treflo-static.sgp1.digitaloceanspaces.com/administration/templates_1661858500647_Thermal%202in.pdf', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/pdf',
+    }, */
+    try {
+      /* fetch('https://treflo-static.sgp1.digitaloceanspaces.com/administration/templates_1661858500647_Thermal%202in.pdf').then(response => {
+        response.blob().then(blob => {
+          console.log(blob)
+            // Creating new object of PDF file
+            const fileURL = window.URL.createObjectURL(blob);
+            // Setting various property values
+            let alink = document.createElement('a');
+            alink.href = fileURL;
+            alink.download = 'SamplePDF.pdf';
+            alink.click();
+        })
+    }) */
+    axios.get(
+      'https://treflo-static.sgp1.digitaloceanspaces.com/administration/templates_1661858500647_Thermal%202in.pdf', 
+      {responseType: 'blob'} // !!!
+    ).then((response) => {
+      console.log('response',response)
+      window.open(URL.createObjectURL(response.data));
+    })
+  
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+
+
 const clearCart=()=>{
   const cart=Array()
   setCartItems(cart)
@@ -147,6 +185,7 @@ const clearCart=()=>{
 
     <footer style={{backgroundColor:'#142b4f',color:'white',minHeight:'10%',justifyContent:'center',alignItems:'center',display:'flex'}}>
         <h6 style={{fontSize:14}}>This is a part of an assignment</h6>
+        <button onClick={()=>{onButtonClick()}}>Download pdf</button>
       </footer>  
     </div>
   );
