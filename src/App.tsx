@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import Header from './components/Header'
 import Main from './components/Main'
+import axios from 'axios'
 import {
   BrowserRouter as Router,
   Routes,
